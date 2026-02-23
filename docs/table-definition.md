@@ -1,1 +1,40 @@
-# 📌 テーブル定義書（Schedule Management System） --- ## 1. users テーブル | カラム名 | 型 | NOT NULL | 主キー | 外部キー | 説明 | |---------|-----|----------|--------|----------|------| | id | INT | YES | YES | - | ユーザーID（自動採番） | | username | VARCHAR(50) | YES | - | - | ログイン用ユーザー名 | | password_hash | VARCHAR(255) | YES | - | - | ハッシュ化されたパスワード | | role | VARCHAR(10) | YES | - | - | 権限（例：user / admin） | | created_at | DATETIME | YES | - | - | 登録日時 | --- ## 2. schedules テーブル | カラム名 | 型 | NOT NULL | 主キー | 外部キー | 説明 | |---------|-----|----------|--------|----------|------| | id | INT | YES | YES | - | スケジュールID（自動採番） | | user_id | INT | YES | - | users.id | 登録したユーザーID | | title | VARCHAR(100) | YES | - | - | 予定タイトル | | detail | TEXT | NO | - | - | 詳細説明 | | date1 | DATE | YES | - | - | 日付 | | start_time | TIME | NO | - | - | 開始時刻 | | end_time | TIME | NO | - | - | 終了時刻 | | category | VARCHAR(30) | NO | - | - | カテゴリ（任意） | | created_at | DATETIME | YES | - | - | 作成日時 | | updated_at | DATETIME | YES | - | - | 更新日時 | --- ## 3. logs テーブル | カラム名 | 型 | NOT NULL | 主キー | 外部キー | 説明 | |---------|-----|----------|--------|----------|------| | id | INT | YES | YES | - | ログID（自動採番） | | user_id | INT | YES | - | users.id | 操作したユーザーID | | action | VARCHAR(255) | YES | - | - | 操作内容（例：login, create schedule） | | timestamp | DATETIME | YES | - | - | 操作日時 |
+# 📌 テーブル定義書（Schedule Management System） 
+
+--- 
+
+## 1. users テーブル 
+| カラム名 | 型 | NOT NULL | 主キー | 外部キー | 説明 | 
+|---------|-----|----------|--------|----------|------| 
+| id | INT | YES | YES | - | ユーザーID（自動採番） | 
+| username | VARCHAR(50) | YES | - | - | ログイン用ユーザー名 | 
+| password_hash | VARCHAR(255) | YES | - | - | ハッシュ化されたパスワード | 
+| role | VARCHAR(10) | YES | - | - | 権限（例：user / admin） | 
+| created_at | DATETIME | YES | - | - | 登録日時 | 
+
+--- 
+
+## 2. schedules テーブル 
+
+| カラム名 | 型 | NOT NULL | 主キー | 外部キー | 説明 | 
+|---------|-----|----------|--------|----------|------| 
+| id | INT | YES | YES | - | スケジュールID（自動採番） | 
+| user_id | INT | YES | - | users.id | 登録したユーザーID | 
+| title | VARCHAR(100) | YES | - | - | 予定タイトル | 
+| detail | TEXT | NO | - | - | 詳細説明 | 
+| date1 | DATE | YES | - | - | 日付 | 
+| start_time | TIME | NO | - | - | 開始時刻 | 
+| end_time | TIME | NO | - | - | 終了時刻 | 
+| category | VARCHAR(30) | NO | - | - | カテゴリ（任意） | 
+| created_at | DATETIME | YES | - | - | 作成日時 | 
+| updated_at | DATETIME | YES | - | - | 更新日時 | 
+
+--- 
+
+## 3. logs テーブル 
+
+| カラム名 | 型 | NOT NULL | 主キー | 外部キー | 説明 | 
+|---------|-----|----------|--------|----------|------| 
+| id | INT | YES | YES | - | ログID（自動採番） | 
+| user_id | INT | YES | - | users.id | 操作したユーザーID | 
+| action | VARCHAR(255) | YES | - | - | 操作内容（例：login, create schedule） | 
+| timestamp | DATETIME | YES | - | - | 操作日時 |
